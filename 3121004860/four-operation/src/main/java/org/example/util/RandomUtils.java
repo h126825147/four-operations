@@ -1,32 +1,66 @@
 package org.example.util;
 
-import java.util.Random;
 
 public class RandomUtils {
     private RandomUtils() {
     }
 
-    private static final String OPERATORS = "+-*/"; // 可用的运算符
-    private static final String[] FRACTIONS = {"1/2", "1/3", "2/3", "1/4", "3/4", "1'1/2", "1'1/3"}; // 可用的真分数
-    private static final Random RANDOM = new Random();  // 随机数常量
+    /**
+     * 生成随机数字
+     *
+     * @param range 最大数字
+     * @return 生成的数字
+     */
+    public static String generateNumber(int range) {
+        StringBuilder sb = new StringBuilder();
+        double randomNumber = Math.random() * range; // 生成0到range之间的随机数
 
-    // 获取一个随机的真分数
-    public static String getRandomFraction() {
-        return FRACTIONS[RANDOM.nextInt(FRACTIONS.length)];
+        if (randomNumber < 1) {
+            // 生成真分数
+            int numerator = (int) (randomNumber * ConstantUtils.MAX_DENOMINATOR) + 1;
+            int denominator = (int) (Math.random() * (ConstantUtils.MAX_DENOMINATOR - 1)) + 2;
+            int integerPart = numerator / denominator;
+            int remainder = numerator % denominator;
+
+            if (integerPart > 0) {
+                sb.append(integerPart).append("'");
+            }
+
+            sb.append(remainder).append("/").append(denominator);
+        } else {
+            // 生成自然数
+            int num = (int) randomNumber;
+            sb.append(num);
+        }
+
+        return sb.toString();
     }
 
-    // 获取一个随机的自然数
-    public static int getRandomNumber(int range) {
-        return RANDOM.nextInt(range);
+    /**
+     * 生成运算符
+     *
+     * @return 运算符
+     */
+    public static char generateOperator() {
+        int random = (int) (Math.random() * 4); // 生成0到3之间的随机数
+        char operator;
+
+        switch (random) {
+            case 0:
+                operator = '+';
+                break;
+            case 1:
+                operator = '-';
+                break;
+            case 2:
+                operator = '×';
+                break;
+            default:
+                operator = '÷';
+                break;
+        }
+
+        return operator;
     }
 
-    // 获取一个随机的运算符
-    public static char getRandomOperator() {
-        return OPERATORS.charAt(RANDOM.nextInt(OPERATORS.length()));
-    }
-
-    // 获取一个随机的布尔值
-    public static boolean getRandomBoolean() {
-        return RANDOM.nextBoolean();
-    }
 }

@@ -1,10 +1,12 @@
 package org.example.service.impl;
 
 import org.example.service.GenerateService;
+import org.example.util.ConstantUtils;
 import org.example.util.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class GenerateServiceImpl implements GenerateService {
     /**
@@ -32,18 +34,23 @@ public class GenerateServiceImpl implements GenerateService {
      */
     @Override
     public String generateExercise(int range) {
-        StringBuilder exercise = new StringBuilder();
-        boolean useFraction = RandomUtils.getRandomBoolean();   // 是否使用真分数
-        if (useFraction) {
-            exercise.append(RandomUtils.getRandomFraction());
-        } else {
-            exercise.append(RandomUtils.getRandomNumber(range));
+        StringBuilder sb = new StringBuilder();
+        int operatorCount = 0; // 当前题目中的运算符个数
+
+        // 随机生成第一个数（自然数或真分数）
+        sb.append(RandomUtils.generateNumber(range));
+
+        while (operatorCount < ConstantUtils.MAX_OPERATORS) {
+            // 随机生成运算符
+            char operator = RandomUtils.generateOperator();
+            sb.append(" ").append(operator).append(" ");
+
+            // 随机生成下一个数
+            sb.append(RandomUtils.generateNumber(range));
+
+            operatorCount++;
         }
-        exercise.append(" ");
-        exercise.append(RandomUtils.getRandomOperator());
-        exercise.append(" ");
-        exercise.append(RandomUtils.getRandomNumber(range));
-        exercise.append(" = ");
-        return exercise.toString();
+
+        return sb + " = ";
     }
 }
