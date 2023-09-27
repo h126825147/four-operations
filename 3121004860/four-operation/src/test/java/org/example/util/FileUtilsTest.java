@@ -23,4 +23,11 @@ public class FileUtilsTest {
 
     }
 
+    @Test
+    public void checkAnswersTest() {
+        FileUtils.checkAnswers("D:\\HYHAO\\Documents\\four-operations\\four-operations\\3121004860\\four-operation\\src\\main\\resources\\Exercises.txt",
+                "D:\\HYHAO\\Documents\\four-operations\\four-operations\\3121004860\\four-operation\\src\\main\\resources\\Answers.txt",
+                "D:\\HYHAO\\Documents\\four-operations\\four-operations\\3121004860\\four-operation\\src\\main\\resources\\Grade.txt");
+    }
+
 }
