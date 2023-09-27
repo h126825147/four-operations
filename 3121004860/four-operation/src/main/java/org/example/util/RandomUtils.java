@@ -14,7 +14,9 @@ public class RandomUtils {
     public static String generateNumber(int range) {
         StringBuilder sb = new StringBuilder();
         double randomNumber = Math.random() * range; // 生成0到range之间的随机数
-
+        while (randomNumber == 0) {
+            randomNumber  = Math.random() * range;
+        }
         if (randomNumber < 1) {
             // 生成真分数
             int numerator = (int) (randomNumber * ConstantUtils.MAX_DENOMINATOR) + 1;

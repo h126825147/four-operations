@@ -19,7 +19,7 @@ public class MathExerciseGenerator {
             quantity = Integer.parseInt(args[1]);
             range = Integer.parseInt(args[3]);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("参数错误，请按以下格式输入参数: Myapp.exe -n <题目数量> -r <数值范围>");
+            System.out.println("参数错误，请按以下格式输入参数: Myapp.jar -n <题目数量> -r <数值范围>");
             return;
         }
 

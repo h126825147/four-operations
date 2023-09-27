@@ -14,19 +14,8 @@ public class CalculateUtils {
         String[] tokens = expression.split(" ");
 
         // 将问题中的真分数转换为假分数形式
-        for (int i = 0; i < tokens.length; i++) {
-            if (tokens[i].contains("/")) {
-/*
-                // 解析真分数
-                String[] fraction = tokens[i].split("[ ']+");
-                int integerPart = Integer.parseInt(fraction[0]);
-                int numerator = Integer.parseInt(fraction[1]);
-                int denominator = Integer.parseInt(fraction[2]);
-                if (numerator < denominator) continue;
-                // 转换为假分数形式
-                int convertedNum = integerPart * denominator + numerator;
-                tokens[i] = String.valueOf(convertedNum);
-*/
+        for (int i = 0; i < tokens.length; i += 2) {
+            if (tokens[i].contains("'")) {
                 String[] parts = tokens[i].split("[ ']+");
                 int wholePart = Integer.parseInt(parts[0]);
                 String[] fractionPart = parts[1].split("/");
@@ -38,10 +27,12 @@ public class CalculateUtils {
         }
 
         // 从左至右进行四则运算，不考虑运算符优先级和括号
+        if (tokens[0].contains("/")) tokens[0] = "0";
         int result = Integer.parseInt(tokens[0]);
         int i = 1;
         while (i < tokens.length) {
             char operator = tokens[i].charAt(0);
+            if (tokens[i + 1].contains("/")) tokens[i + 1] = "0";
             int operand = Integer.parseInt(tokens[i + 1]);
 
             switch (operator) {

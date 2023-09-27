@@ -5,6 +5,6 @@ import org.junit.Test;
 public class CalculateUtilsTest {
     @Test
     public void calculateAnswerTest() {
-        System.out.println(CalculateUtils.calculateAnswer("6 ÷ 2 + 1'1/2"));
+        System.out.println(CalculateUtils.calculateAnswer("3/7 × 4 + 3 × 3 = "));
     }
 }
