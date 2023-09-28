@@ -72,8 +72,6 @@ public class FileUtils {
         for (int i = 0; i < answerLines.size(); i++) {
             String answer = answerLines.get(i);
             String expectedAnswer = exerciseLines.get(i).substring(0, 3) + CalculateUtils.calculateAnswer(exerciseLines.get(i).substring(3));
-            System.out.println(answer);
-            System.out.println(expectedAnswer);
 
             if (answer.equals(expectedAnswer)) {
                 correctCount++;
