@@ -60,6 +60,13 @@ public class FileUtils {
         return messages;
     }
 
+    /**
+     * 判断答案并统计写入
+     *
+     * @param exercisesFile 题目文件
+     * @param answersFile   答案文件
+     * @param gradeFile     统计文件
+     */
     public static void checkAnswers(String exercisesFile, String answersFile, String gradeFile) {
         List<String> exerciseLines = readFileLines(exercisesFile);
         List<String> answerLines = readFileLines(answersFile);
@@ -85,6 +92,15 @@ public class FileUtils {
         writeGradeToFile(correctCount, wrongCount, correctIndices, wrongIndices, gradeFile);
     }
 
+    /**
+     * 将结果写入统计文件
+     *
+     * @param correctCount   正确数量
+     * @param wrongCount     错误数量
+     * @param correctIndices 正确索引集合
+     * @param wrongIndices   错误索引集合
+     * @param gradeFile      统计文件
+     */
     public static void writeGradeToFile(int correctCount, int wrongCount, List<Integer> correctIndices, List<Integer> wrongIndices, String gradeFile) {
         try (Formatter formatter = new Formatter(gradeFile)) {
             formatter.format("Correct: %d %s%n", correctCount, getIndicesString(correctCount, correctIndices));
@@ -94,6 +110,13 @@ public class FileUtils {
         }
     }
 
+    /**
+     * 索引统一格式
+     *
+     * @param count   索引数量
+     * @param indices 索引集合
+     * @return 统一后的格式
+     */
     public static String getIndicesString(int count, List<Integer> indices) {
         StringBuilder sb = new StringBuilder("(");
 

@@ -39,7 +39,7 @@ public class RandomUtils {
     }
 
     /**
-     * 生成运算符
+     * 生成随机运算符
      *
      * @return 运算符
      */

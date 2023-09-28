@@ -43,6 +43,7 @@ public class CalculateUtils {
                     result -= operand;
                     break;
                 case '×':
+                case '*':
                     result *= operand;
                     break;
                 case '÷':
