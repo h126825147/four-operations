@@ -42,10 +42,6 @@ public class MathExerciseGenerator {
         FileUtils.saveAnswersToFile(answers, "Answers.txt");
 
         // 判断答案并统计
-        if (args.length >= 5 && args[4].equals("-e") && args.length >= 7 && args[6].equals("-a")) {
-            String exercisesFile = args[5];
-            String answersFile = args[7];
-            FileUtils.checkAnswers(exercisesFile, answersFile, "Grade.txt");
-        }
+        FileUtils.checkAnswers("Exercises.txt", "Answers.txt", "Grade.txt");
     }
 }

@@ -23,7 +23,7 @@ public class MyappTest {
         List<String> exercises = GENERATE_SERVICE.generateExercises(5, 5);
 
         // 保存题目到文件
-        FileUtils.saveExercisesToFile(exercises, "D:\\HYHAO\\Documents\\four-operations\\four-operations\\3121004860\\four-operation\\src\\main\\resources\\Exercises.txt");
+        FileUtils.saveExercisesToFile(exercises, exercisesFile);
 
         // 计算答案
         List<String> answers = new ArrayList<>();
@@ -34,7 +34,7 @@ public class MyappTest {
         }
 
         // 保存答案到文件
-        FileUtils.saveAnswersToFile(answers, "Answers.txt");
+        FileUtils.saveAnswersToFile(answers, answersFile);
 
         // 判断答案并统计
         FileUtils.checkAnswers(exercisesFile, answersFile, gradeFile);
